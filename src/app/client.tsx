@@ -11,7 +11,7 @@ export default function IndexClientPage({
 }) {
   const [genre, setGenre] = React.useState<string>('');
   const [readList, setReadList] = React.useState<string[]>([]);
-  const [filters, setFilters] = React.useState(0);
+  const [filters, setFilters] = React.useState('0');
   const fieldReadList = books.filter((el) => readList.includes(el.ISBN));
   const matches = React.useMemo(
     () => (genre ? books.filter((el) => el.genre == genre) : books),
@@ -43,9 +43,11 @@ export default function IndexClientPage({
     localStorage.setItem('readList', JSON.stringify(updatedBooks));
     console.log(books);
   };
-  const handleChangeMinPages = (e) => {
+  const handleChangeMinPages = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilters(e.target.value);
-    const booksRange = books.filter((el) => el.pages <= e.target.value);
+    const booksRange = books.filter(
+      (el) => el.pages <= parseInt(e.target.value, 10)
+    );
     setBooksList(booksRange);
   };
 
