@@ -15,9 +15,9 @@ export default function RootLayout({
     <html lang="es">
       <body className="relative">
         <main className="m-auto gap-4 py-4 px-8 max-w-screen-lg grid grid-rows-[60px,1fr,60px]">
-          <nav className="flex items-center text-2xl font-bold">
-            Favorite books
-          </nav>
+          <h1 className="flex items-center justify-center text-2xl font-bold">
+            Libreria de José
+          </h1>
           <section>{children}</section>
           <footer className="flex items-center justify-center ">
             Por Jose
